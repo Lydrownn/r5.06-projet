@@ -44,7 +44,7 @@ Ratio `R = part dans les propositions / part dans les candidats`.
 - **Île-de-France** : région la plus défavorable aux bacs techno et pro (R = 0,78 et 0,79 toutes filières), en particulier en licence (R bac techno = 0,63, contre 0,82 à 0,91 dans la plupart des régions). C'est aussi la seule région où les boursiers sont légèrement désavantagés (R = 0,92).
 - **BTS** : l'avantage des bacs pro varie fortement selon la région (R = 1,27 en Hauts-de-France, 1,05 en Centre-Val de Loire). Le R des bacs généraux va de 0,74 (La Réunion) et 0,75 (Normandie) à 1,04 (Centre-Val de Loire).
 - **BUT** : résultats homogènes dans toutes les régions (R bac techno entre 1,09 et 1,17), cohérent avec un quota national appliqué uniformément. Le BUT peut servir de **groupe témoin**.
-- **Recrutement local** : en licence, 78 % des admis néo-bacheliers viennent de la même académie en province, 81 % en Île-de-France (3 académies regroupées) et 88 % en outre-mer. La part atteint 85 à 91 % en PASS et 84 à 95 % en BTS.
+- **Recrutement local** : en licence, 77 % des admis néo-bacheliers viennent de la même académie en province, 81 % en Île-de-France (3 académies regroupées) et 88 % en outre-mer. La part atteint 85 à 91 % en PASS et 84 à 95 % en BTS.
 
 ### Méthodologie envisagée
 - **Indicateur :** ratio de représentation `R` (R = 1 : égalité ; R < 1 : profil désavantagé ; R > 1 : profil favorisé), calculé par formation, filière et région. L'étape intermédiaire des candidats classés permet de suivre l'entonnoir candidats → classés → propositions.
@@ -62,3 +62,20 @@ On choisit une formation ou un filtre (filière, région, statut). L'outil affic
 - Les populations comparées diffèrent légèrement (candidats néo-bacheliers en phase principale d'un côté, propositions aux candidats en terminale de l'autre).
 - Les DROM et la Corse comptent peu de formations (47 à 231) : leurs ratios sont fragiles et doivent être interprétés avec prudence ou regroupés.
 - Une seule session (2023) : on ne peut pas mesurer l'évolution des écarts dans le temps. Les sessions 2018 à 2022, disponibles sur data.gouv.fr, permettraient d'étudier l'effet des quotas.
+
+## Exécution
+
+Prérequis : Python 3.11 ou plus.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+jupyter notebook analyse.ipynb
+```
+
+### Contenu du dépôt
+- `fr-esr-parcoursup_2023.csv` : jeu de données Parcoursup 2023 (data.gouv.fr).
+- `data/regions.geojson` : contours simplifiés des régions de France métropolitaine ([france-geojson](https://github.com/gregoiredavid/france-geojson)), utilisés pour les cartes.
+- `analyse.ipynb` : analyse exploratoire (entonnoir de sélection, ratio `R` par filière, tests du χ², bacheliers généraux en BTS/BUT, analyse par région, cartes).
+- `requirements.txt` : dépendances Python.
